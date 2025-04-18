@@ -48,7 +48,7 @@ export const playInVoice = async (interaction, youtubeUrl) => {
       player.on("error", (error) => {
         console.error("❌ Error playing audio:", error.message);
         connection.destroy();
-        reject(error); // ❌ Reject on error
+        reject(error);
       });
 
       connection.subscribe(player);
