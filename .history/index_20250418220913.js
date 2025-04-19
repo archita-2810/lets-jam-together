@@ -2,6 +2,7 @@ import { Client, Events, GatewayIntentBits } from "discord.js";
 // const commands = require("./command");
 import { trackDetails, play } from "./music/play.js";
 import nowplaying from "./music/nowplaying.js";
+require("dotenv").config();
 
 const client = new Client({
   intents: [

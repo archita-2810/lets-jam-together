@@ -1,7 +1,8 @@
 import { Client, Events, GatewayIntentBits } from "discord.js";
 // const commands = require("./command");
-import { trackDetails, play } from "./music/play.js";
+import {trackDetails, play} from "./music/play.js";
 import nowplaying from "./music/nowplaying.js";
+require('dotenv').config();
 
 const client = new Client({
   intents: [
@@ -19,7 +20,9 @@ client.on("messageCreate", (message) => {
   });
 });
 
-client.login(process.env.DISCORD_BOT_TOKEN);
+client.login(
+  process.env.DISCORD_BOT_TOKEN
+);
 
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
@@ -27,13 +30,15 @@ client.on("interactionCreate", async (interaction) => {
   const commandName = interaction.commandName;
   if (commandName === "ping") {
     await interaction.reply("🏓 Pong!");
-  } else if (commandName === "play") {
+  }
+  else if (commandName === "play") {
     const playlistUrl = interaction.options.getString("playlist");
     console.log(playlistUrl);
     const trackDetails = await play(interaction, playlistUrl);
 
     await nowplaying(interaction, trackDetails);
-  } else if (commandName === "nowplaying") {
+  }
+  else if(commandName === 'nowplaying') {
     await nowplaying(interaction, trackDetails);
   }
 });

@@ -10,7 +10,6 @@ import ytdl from "@distube/ytdl-core";
 
 export const playInVoice = async (interaction, youtubeUrl) => {
   const channel = interaction.member.voice.channel;
-  // console.log(channel);
 
   if (!channel) {
     await interaction.followUp("❌ You need to be in a voice channel!");
@@ -29,8 +28,6 @@ export const playInVoice = async (interaction, youtubeUrl) => {
     highWaterMark: 1 << 25,
   });
 
-  // console.log(youtubeUrl);
-
   const resource = createAudioResource(stream);
   const player = createAudioPlayer();
 
@@ -45,7 +42,7 @@ export const playInVoice = async (interaction, youtubeUrl) => {
       player.on(AudioPlayerStatus.Idle, () => {
         console.log("🔁 Track ended.");
         connection.destroy();
-        resolve();
+        resolve(); // ✅ Resolve when track finishes
       });
 
       player.on("error", (error) => {

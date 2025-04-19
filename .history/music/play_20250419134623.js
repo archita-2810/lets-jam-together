@@ -19,7 +19,7 @@ const play = async (interaction, playlistUrl) => {
 
   trackDetails = [];
 
-  tracks.forEach(async (item, index) => {
+  tracks.slice(0, trackDetails.length-1).forEach(async (item, index) => {
     const track = item.track;
     const trackName = track.name;
     const artistName = track.artists.map((a) => a.name).join(", ");

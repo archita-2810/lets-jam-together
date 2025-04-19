@@ -29,7 +29,7 @@ export const playInVoice = async (interaction, youtubeUrl) => {
     highWaterMark: 1 << 25,
   });
 
-  // console.log(youtubeUrl);
+  //console.log()
 
   const resource = createAudioResource(stream);
   const player = createAudioPlayer();

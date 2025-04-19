@@ -19,14 +19,14 @@ const play = async (interaction, playlistUrl) => {
 
   trackDetails = [];
 
-  tracks.forEach(async (item, index) => {
+  tracks.slice(0, trackDetails.length).forEach(async (item, index) => {
     const track = item.track;
     const trackName = track.name;
     const artistName = track.artists.map((a) => a.name).join(", ");
 
     trackDetails.push({ trackName, artistName });
 
-    console.log(`#${index + 1}: ${trackName} by ${artistName}`);
+    console.log(`#${index}: ${trackName} by ${artistName}`);
   });
   await interaction.reply(`✅ Starting to play playlist: ${playlistUrl}`);
   return trackDetails;
