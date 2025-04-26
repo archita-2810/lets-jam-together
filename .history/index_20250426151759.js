@@ -2,7 +2,7 @@ import { Client, Events, GatewayIntentBits } from "discord.js";
 // const commands = require("./command");
 import { trackDetails, play } from "./music/play.js";
 import nowplaying from "./music/nowplaying.js";
-import { initPlayer, getPlayer } from "./music/initiating.js";
+import { initPlayer } from "./music/initiating.js";
 import { skiptrack } from "./music/skip.js";
 import { pauseMusic } from "./music/pause.js";
 import { resumeMusic } from "./music/resume.js";
@@ -18,18 +18,19 @@ const client = new Client({
   ],
 });
 
-client.once("ready", async () => {
+client.once("ready", () => {
   console.log(`🤖 Logged in as ${client.user.tag}`);
-  await initPlayer(client);
-
-  const player = getPlayer();
-  player.events.on("playerStart", (queue, track) => {
-    console.log(`🎵 Now playing: ${track.title}`);
-    if (queue.metadata && queue.metadata.channel) {
-      queue.metadata.channel.send(`🎵 Now playing: **${track.title}**`);
-    }
-  });
+  initPlayer(client);
 });
+
+const player = 
+player.events.on('playerStart', (queue, track) => {
+  console.log(`🎵 Now playing: ${track.title}`);
+  if (queue.metadata && queue.metadata.channel) {
+    queue.metadata.channel.send(`🎵 Now playing: **${track.title}**`);
+  }
+});
+
 
 client.on("messageCreate", (message) => {
   if (message.author.bot) return;

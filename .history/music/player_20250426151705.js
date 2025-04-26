@@ -14,7 +14,7 @@ export const voiceplayerI = async (interaction, query) => {
 
   const queue = await player.nodes.create(interaction.guild);
   queue.metadata = {
-    channel: interaction.channel,
+    channel: interaction.channel
   };
 
   // console.log("this is queue - ", queue);
@@ -41,7 +41,7 @@ export const voiceplayerI = async (interaction, query) => {
   // console.log("this is video url - ", videoUrl);
 
   const result = await player.search(videoUrl, {
-    requestedBy: interaction.user,
+    requestedBy: interaction.user
   });
   // console.log("this is result - ", result.tracks);
 

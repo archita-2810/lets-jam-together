@@ -18,7 +18,7 @@ const client = new Client({
   ],
 });
 
-client.once("ready", async () => {
+client.once("ready", () => {
   console.log(`🤖 Logged in as ${client.user.tag}`);
   await initPlayer(client);
 

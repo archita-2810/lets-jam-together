@@ -13,9 +13,6 @@ export const voiceplayerI = async (interaction, query) => {
   }
 
   const queue = await player.nodes.create(interaction.guild);
-  queue.metadata = {
-    channel: interaction.channel,
-  };
 
   // console.log("this is queue - ", queue);
   try {
@@ -41,7 +38,7 @@ export const voiceplayerI = async (interaction, query) => {
   // console.log("this is video url - ", videoUrl);
 
   const result = await player.search(videoUrl, {
-    requestedBy: interaction.user,
+    requestedBy: interaction.user
   });
   // console.log("this is result - ", result.tracks);
 
@@ -55,8 +52,8 @@ export const voiceplayerI = async (interaction, query) => {
   try {
     if (!queue.playing && !queue.node.isPlaying()) {
       await queue.node.play();
-      // console.log("Playing track:", track.title);
-      // await interaction.followUp(`🎵 Now playing: **${track.title}**`);
+      console.log("Playing track:", track.title);
+      await interaction.followUp(`🎵 Now playing: **${track.title}**`);
     }
   } finally {
     queue.tasksQueue.release();

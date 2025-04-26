@@ -18,17 +18,9 @@ const client = new Client({
   ],
 });
 
-client.once("ready", async () => {
+client.once("ready", () => {
   console.log(`🤖 Logged in as ${client.user.tag}`);
-  await initPlayer(client);
-
-  const player = getPlayer();
-  player.events.on("playerStart", (queue, track) => {
-    console.log(`🎵 Now playing: ${track.title}`);
-    if (queue.metadata && queue.metadata.channel) {
-      queue.metadata.channel.send(`🎵 Now playing: **${track.title}**`);
-    }
-  });
+  initPlayer(client);
 });
 
 client.on("messageCreate", (message) => {
