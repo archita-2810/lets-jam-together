@@ -6,8 +6,11 @@ Welcome to **Lets Jam Together**, the ultimate music bot for your Discord server
 
 ## 🚀 Features
 
-- **/play [spotify playlist id]**: Start playing the songs in the voice channel. {make sure you've already joined a voice channel before using the commands}
-- **/nowplaying**: Get the details of the currently playing song. {even without calling the command, it will simply tell you the name of the song while playing}
+- **/play [spotify playlist link]**: Start playing the songs in the voice channel. {Make sure you've already joined a voice channel before using the commands.}
+- **/queue**: Get the list of upcoming songs in the queue.
+- **/skip**: Skip the currently playing song.
+- **/resume**: Resume the paused song.
+- **/pause**: Pause the currently playing song.
 - **Seamless YouTube integration**: Easily search and play music from YouTube.
 
 ---
@@ -17,4 +20,5 @@ Welcome to **Lets Jam Together**, the ultimate music bot for your Discord server
 - **Node.js**: Runtime environment for executing JavaScript code.
 - **discord.js**: Library for interacting with the Discord API.
 - **FFmpeg**: Required for audio transcoding.
-- **@distube/ytdl-core**: For downloading YouTube videos and streaming audio.
+- **discord-player**: A powerful and easy-to-use music player for Discord bots.
+- **YouTube-dl**: An alternative for downloading media from YouTube, offering additional features.
