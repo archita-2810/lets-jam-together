@@ -1,0 +1,15 @@
+// making this using queueMap
+import {
+  joinVoiceChannel,
+  createAudioPlayer,
+  createAudioResource,
+  AudioPlayerStatus,
+  VoiceConnectionStatus,
+  entersState,
+} from "@discordjs/voice";
+
+const queue = new Map();
+
+export const getOrCreateConnection = (interaction) => {
+  const gid = interaction.gui
+}

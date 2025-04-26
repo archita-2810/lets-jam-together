@@ -1,0 +1,14 @@
+import { getPlayer } from "./initiating.js";
+
+export const pauseMusic = async (interaction) => {
+  const player = getPlayer();
+  const queue = player.nodes.get(interaction.guild.id);
+
+  if (!queue || !queue.node.isPlaying()) {
+    await interaction.followUp("⏸️ No music is currently playing.");
+    return;
+  }
+
+  queue.node.pause();
+  await interaction.followUp("⏸️ Music paused.");
+};

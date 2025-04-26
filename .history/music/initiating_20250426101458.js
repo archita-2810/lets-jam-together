@@ -1,0 +1,18 @@
+import { Player } from "discord-player";
+import { YoutubeiExtractor } from "discord-player-youtubei"
+import { SoundCloudExtractor } from "@discord-player/extractor";
+
+let player;
+
+export const initPlayer = async (client) => {
+  player = new Player(client);
+  player.extractors.register(YoutubeiExtractor, {})
+
+  await player.extractors.loadMulti([
+    new SoundCloudExtractor(),
+  ]);
+
+  return player;
+};
+
+export const getPlayer = () => player;
